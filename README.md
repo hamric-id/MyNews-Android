@@ -1,9 +1,11 @@
 # MyNews App 🚀
-Developed using Android Studio Quail 1 2026.1.1 Patch 2, with concept:
+Developed using Android Studio Quail 1 2026.1.1 Patch 2:
 - MVVM + Clean Architecture
 - Multi Module
 - Jetpack Compose
 - Dagger Hilt (Dependency Injection)
+- UI Test
+- Unit Test
 - Retrofit + Okhttp
 - Room Database (for caching to increase UX when bad internet connection)
 - Reactive Programming
