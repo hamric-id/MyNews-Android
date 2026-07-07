@@ -2,6 +2,7 @@ package com.hamric.core.network.di
 
 import com.hamric.core.network.BuildConfig
 import com.hamric.core.network.api.NewsApi
+import com.hamric.core.network.interceptor.ApiKeyInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,6 +30,7 @@ object NetworkModule {
         }
 
         return OkHttpClient.Builder()
+            .addInterceptor(ApiKeyInterceptor())
             .addInterceptor(loggingInterceptor)
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
