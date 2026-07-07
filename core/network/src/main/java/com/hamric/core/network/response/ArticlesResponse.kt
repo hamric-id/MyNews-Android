@@ -13,7 +13,15 @@ data class ArticlesResponse(
     val message: String? = null,
     @SerializedName("code")
     val code: String? = null
-)
+) {
+    fun getTotalPages(pageSize: Int = 20): Int {
+        return if (totalResults > 0) {
+            (totalResults + pageSize - 1) / pageSize
+        } else {
+            1
+        }
+    }
+}
 
 data class ArticleResponse(
     @SerializedName("source")
