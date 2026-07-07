@@ -9,11 +9,14 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.hamric.core.designsystem.ui.theme.MyNewsTheme
 import com.hamric.feature.categories.presentation.ui.CategoriesScreen
+import com.hamric.feature.sources.presentation.ui.SourcesScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,9 +47,29 @@ fun MyNewsNavigation() {
         composable("categories") {
             CategoriesScreen(
                 onCategoryClick = { category ->
-                    Log.d("test","trigger open list news source with category: ${category.name}")
-                    // navController.navigate("sources/${category.id}")
+                    navController.navigate("sources/${category.id}/${category.name}")
                 }
+            )
+        }
+
+        composable(
+            route = "sources/{categoryId}/{categoryName}",
+            arguments = listOf(
+                navArgument("categoryId") { type = NavType.StringType },
+                navArgument("categoryName") { type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val categoryId = backStackEntry.arguments?.getString("categoryId") ?: ""
+            val categoryName = backStackEntry.arguments?.getString("categoryName") ?: ""
+
+            SourcesScreen(
+                categoryId = categoryId,
+                categoryName = categoryName,
+                onSourceClick = { source ->
+                    Log.d("test","trigger to open article screen of ${source.id} = ${source.name}")
+                    // navController.navigate("articles/${source.id}/${source.name}")
+                },
+                onBack = { navController.popBackStack() }
             )
         }
     }
