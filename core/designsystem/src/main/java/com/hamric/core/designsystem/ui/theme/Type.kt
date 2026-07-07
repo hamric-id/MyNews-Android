@@ -1,4 +1,4 @@
-package com.hamric.mynews.ui.theme
+package com.hamric.core.designsystem.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
