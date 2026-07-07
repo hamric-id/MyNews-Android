@@ -10,8 +10,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hamric.core.model.Source
 
@@ -28,6 +30,9 @@ fun SourceItem(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 2.dp,
             pressedElevation = 6.dp
+        ),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.LightGray
         )
     ) {
         Column(
@@ -38,7 +43,8 @@ fun SourceItem(
             Text(
                 text = source.name,
                 style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
             )
             source.description?.let {
                 Text(
@@ -107,5 +113,28 @@ fun getCountryFlag(countryCode: String): String {
         "eg" -> "🇪🇬"
         "ke" -> "🇰🇪"
         else -> "🌍"
+    }
+}
+
+@Preview(
+    name = "Source Item - With Description",
+    showBackground = true,
+    backgroundColor = 0xFFF5F5F5
+)
+@Composable
+private fun PreviewSourceItemWithDescription() {
+    MaterialTheme {
+        SourceItem(
+            source = Source(
+                id = "bbc-news",
+                name = "BBC News",
+                description = "BBC News is a British news service that provides comprehensive coverage of world events.",
+                url = "https://www.bbc.com/news",
+                category = "general",
+                language = "en",
+                country = "gb"
+            ),
+            onClick = {}
+        )
     }
 }
