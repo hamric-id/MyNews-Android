@@ -17,11 +17,13 @@ interface NewsApi {
         @Query("language") language: String = "en"
     ): SourcesResponse
 
-
     @GET("everything")
-    suspend fun searchArticles(
-        @Query("q") query: String,
+    suspend fun getArticles(
+        @Query("sources") sourceIDs: String,
+        @Query("q") searchKeyword: String = "",
+        @Query("sortBy") sortBy: String = "",
+        @Query("language") language: String = "en",
         @Query("page") page: Int = 1,
-        @Query("pageSize") pageSize: Int = 20
+        @Query("pageSize") pageSize: Int = 10
     ): ArticlesResponse
 }

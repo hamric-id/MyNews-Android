@@ -41,7 +41,7 @@ class CategoryRepositoryImplTest {
         assertThat(categories).hasSize(3)
         assertThat(categories?.get(0)?.id).isEqualTo("business")
         assertThat(categories?.get(0)?.name).isEqualTo("Business")
-        assertThat(categories?.get(0)?.headlineCount).isEqualTo(2)
+        assertThat(categories?.get(0)?.sourcesCount).isEqualTo(2)
 
         verify(mockApi).getSources()
     }
@@ -89,15 +89,15 @@ class CategoryRepositoryImplTest {
 
         val business = categories?.find { it.id == "business" }
         assertThat(business).isNotNull()
-        assertThat(business?.headlineCount).isEqualTo(2)
+        assertThat(business?.sourcesCount).isEqualTo(2)
 
         val sports = categories?.find { it.id == "sports" }
         assertThat(sports).isNotNull()
-        assertThat(sports?.headlineCount).isEqualTo(3)
+        assertThat(sports?.sourcesCount).isEqualTo(3)
 
         val tech = categories?.find { it.id == "technology" }
         assertThat(tech).isNotNull()
-        assertThat(tech?.headlineCount).isEqualTo(1)
+        assertThat(tech?.sourcesCount).isEqualTo(1)
 
         verify(mockApi).getSources()
     }

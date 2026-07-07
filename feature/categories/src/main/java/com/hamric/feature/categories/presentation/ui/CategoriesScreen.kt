@@ -1,16 +1,11 @@
 package com.hamric.feature.categories.presentation.ui
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -31,6 +26,7 @@ import com.hamric.core.designsystem.components.ErrorState
 import com.hamric.core.designsystem.components.LoadingIndicator
 import com.hamric.core.designsystem.ui.theme.MyNewsTheme
 import com.hamric.core.model.Category
+import com.hamric.feature.categories.presentation.ui.components.CategoryItem
 import com.hamric.feature.categories.presentation.viewmodel.CategoriesViewModel
 
 
@@ -98,7 +94,7 @@ fun CategoryList(
     LazyColumn(
         modifier = modifier.fillMaxSize(),
         contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
+        verticalArrangement = Arrangement.spacedBy(5.dp)
     ) {
         items(categories, key = { it.id }) { category ->
             CategoryItem(
@@ -109,44 +105,7 @@ fun CategoryList(
     }
 }
 
-@Composable
-fun CategoryItem(
-    category: Category,
-    onClick: () -> Unit
-) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onClick() },
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 4.dp,
-            pressedElevation = 8.dp
-        ),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
-        )
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(20.dp)
-        ) {
-            Text(
-                text = category.name,
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Medium
-            )
-            if (category.headlineCount > 0) {
-                Text(
-                    text = "${category.headlineCount} News on Headline",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.padding(top = 4.dp)
-                )
-            }
-        }
-    }
-}
+
 
 @Preview(
     name = "Categories Screen Preview",
@@ -166,12 +125,12 @@ fun PreviewCategoriesScreen() {
 @Composable
 fun CategoriesScreenPreviewContent() {
     val sampleCategories = listOf(
-        Category(id = "business", name = "Business",  headlineCount = 15),
-        Category(id = "technology", name = "Technology",  headlineCount = 25),
-        Category(id = "sports", name = "Sports",  headlineCount = 18),
-        Category(id = "entertainment", name = "Entertainment", headlineCount = 12),
-        Category(id = "science", name = "Science", headlineCount = 10),
-        Category(id = "health", name = "Health",headlineCount = 8)
+        Category(id = "business", name = "Business",  sourcesCount = 15),
+        Category(id = "technology", name = "Technology",  sourcesCount = 25),
+        Category(id = "sports", name = "Sports",  sourcesCount = 18),
+        Category(id = "entertainment", name = "Entertainment", sourcesCount = 12),
+        Category(id = "science", name = "Science", sourcesCount = 10),
+        Category(id = "health", name = "Health",sourcesCount = 8)
     )
 
     Scaffold(
