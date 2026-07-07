@@ -12,4 +12,4 @@ import org.junit.runners.Suite
     GetCategoriesUseCaseTest::class,
     CategoriesViewModelTest::class
 )
-class CategoriessTestSuite
+class CategoriesTestSuite
