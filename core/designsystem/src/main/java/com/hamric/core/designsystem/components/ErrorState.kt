@@ -24,7 +24,7 @@ fun ErrorState(
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "❌ $message",
+            text = "❌ ${message.run{if(this=="HTTP 429") "Your API Key of https://newsapi.org reach limit request, buy bussiness plan to increase limit" else this}}",
             color = MaterialTheme.colorScheme.error,
             modifier = Modifier.padding(16.dp)
         )
