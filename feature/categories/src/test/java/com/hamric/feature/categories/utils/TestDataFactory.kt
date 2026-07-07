@@ -18,7 +18,7 @@ object TestDataFactory {
             Category(
                 id = id,
                 name = name,
-                headlineCount = (10 + index * 5)
+                sourcesCount = (10 + index * 5)
             )
         }
     }

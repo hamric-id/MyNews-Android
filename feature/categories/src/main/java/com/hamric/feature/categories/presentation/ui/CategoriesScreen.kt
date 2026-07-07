@@ -98,7 +98,7 @@ fun CategoryList(
     LazyColumn(
         modifier = modifier.fillMaxSize(),
         contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
+        verticalArrangement = Arrangement.spacedBy(5.dp)
     ) {
         items(categories, key = { it.id }) { category ->
             CategoryItem(
@@ -136,9 +136,9 @@ fun CategoryItem(
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Medium
             )
-            if (category.headlineCount > 0) {
+            if (category.sourcesCount > 0) {
                 Text(
-                    text = "${category.headlineCount} News on Headline",
+                    text = "${category.sourcesCount} Source available",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.padding(top = 4.dp)
@@ -166,12 +166,12 @@ fun PreviewCategoriesScreen() {
 @Composable
 fun CategoriesScreenPreviewContent() {
     val sampleCategories = listOf(
-        Category(id = "business", name = "Business",  headlineCount = 15),
-        Category(id = "technology", name = "Technology",  headlineCount = 25),
-        Category(id = "sports", name = "Sports",  headlineCount = 18),
-        Category(id = "entertainment", name = "Entertainment", headlineCount = 12),
-        Category(id = "science", name = "Science", headlineCount = 10),
-        Category(id = "health", name = "Health",headlineCount = 8)
+        Category(id = "business", name = "Business",  sourcesCount = 15),
+        Category(id = "technology", name = "Technology",  sourcesCount = 25),
+        Category(id = "sports", name = "Sports",  sourcesCount = 18),
+        Category(id = "entertainment", name = "Entertainment", sourcesCount = 12),
+        Category(id = "science", name = "Science", sourcesCount = 10),
+        Category(id = "health", name = "Health",sourcesCount = 8)
     )
 
     Scaffold(

@@ -27,12 +27,12 @@ class CategoriesScreenTest {
     val composeTestRule = createComposeRule()
 
     private val sampleCategories = listOf(
-        Category(id = "business", name = "Business", headlineCount = 15),
-        Category(id = "technology", name = "Technology", headlineCount = 25),
-        Category(id = "sports", name = "Sports", headlineCount = 18),
-        Category(id = "entertainment", name = "Entertainment", headlineCount = 12),
-        Category(id = "science", name = "Science", headlineCount = 10),
-        Category(id = "health", name = "Health", headlineCount = 8)
+        Category(id = "business", name = "Business", sourcesCount = 15),
+        Category(id = "technology", name = "Technology", sourcesCount = 25),
+        Category(id = "sports", name = "Sports", sourcesCount = 18),
+        Category(id = "entertainment", name = "Entertainment", sourcesCount = 12),
+        Category(id = "science", name = "Science", sourcesCount = 10),
+        Category(id = "health", name = "Health", sourcesCount = 8)
     )
 
     private var clickedCategory: Category? = null
@@ -88,7 +88,7 @@ class CategoriesScreenTest {
         composeTestRule.waitForIdle()
 
         sampleCategories.forEach { category ->
-            val countText = "${category.headlineCount} News on Headline"
+            val countText = "${category.sourcesCount} Source available"
             composeTestRule.onNodeWithText(countText).assertIsDisplayed()
         }
     }
