@@ -50,6 +50,8 @@ dependencies {
     implementation(project(":core:network"))
     implementation(project(":core:designsystem"))
     implementation(project(":feature:categories"))
+    implementation(project(":feature:sources"))
+    implementation(project(":feature:articles"))
 
     //jetpack compose
     implementation(platform(libs.androidx.compose.bom))
