@@ -1,16 +1,11 @@
 package com.hamric.feature.categories.presentation.ui
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -31,6 +26,7 @@ import com.hamric.core.designsystem.components.ErrorState
 import com.hamric.core.designsystem.components.LoadingIndicator
 import com.hamric.core.designsystem.ui.theme.MyNewsTheme
 import com.hamric.core.model.Category
+import com.hamric.feature.categories.presentation.ui.components.CategoryItem
 import com.hamric.feature.categories.presentation.viewmodel.CategoriesViewModel
 
 
@@ -109,44 +105,7 @@ fun CategoryList(
     }
 }
 
-@Composable
-fun CategoryItem(
-    category: Category,
-    onClick: () -> Unit
-) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onClick() },
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 4.dp,
-            pressedElevation = 8.dp
-        ),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
-        )
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(20.dp)
-        ) {
-            Text(
-                text = category.name,
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Medium
-            )
-            if (category.sourcesCount > 0) {
-                Text(
-                    text = "${category.sourcesCount} Source available",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.padding(top = 4.dp)
-                )
-            }
-        }
-    }
-}
+
 
 @Preview(
     name = "Categories Screen Preview",
