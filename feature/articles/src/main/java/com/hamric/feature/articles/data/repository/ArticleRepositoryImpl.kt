@@ -21,10 +21,10 @@ class ArticleRepositoryImpl @Inject constructor(
     ): Flow<PagingData<Article>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 8,
+                pageSize = 30,
                 prefetchDistance = 2,
                 enablePlaceholders = false,
-                initialLoadSize = 8
+                initialLoadSize = 30
             ),
             pagingSourceFactory = {
                 ArticlePagingSource(
